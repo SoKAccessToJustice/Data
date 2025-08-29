@@ -1,0 +1,75 @@
+General instructions:
+You are acting as an academic researcher who is an expert in law and AI.
+For the purposes of a scoping review, you are tasked with annotating the paper that is provided to you below according to the fields and format specified below.
+The paper text provided to you was extracted from a PDF file. Carefully read the paper text and annotate the fields below with the information you find.
+
+Fields to annotate:
+You will need to generate ALL the following annotations, but nothing more:
+- title: Extract the exact title of the paper. Leave it empty if you can't find a title.
+- summary: Write a very concise (2 short sentences) summary of the paper. Leave it empty if you can't parse the paper.
+- is_english: Is the paper mainly written in English (true) or another language (false)?
+- audience_legal_access: What is the main purpose and audience of the paper: does the paper address the question of access to justice e.g. for underserved communities (idealistic objective, AI for social good), or does it target e.g. law firms or other mostly profit-driven companies or people (market objective, AI for increasing productivity)?
+- llm_use: Does the paper primarily discuss or propose technological approaches based on modern large language models?
+- paper_type: Does the paper primarily 1) propose a new specific technique, tool, or approach or 2) discuss / evaluate an existing specific technique, tool, or approach or 3) discuss the topic broadly without focusing on a specific technique, tool, or approach?
+- sentiment: What is the paper's overall sentiment towards AI for access to justice?
+- technique: If the paper covers a specific technique, tool, or approach, what is it?
+- testing: If the paper covers a specific technique, tool, or approach, how was it evaluated (e.g. benchmark name(s) or very short summary of the testing procedure)?
+- results: If the paper evaluates a specific technique, tool, or approach, what were the results? If the paper evaluates multiple approaches, only report the results for the most successful (e.g. best scoring) one.
+- obstacles: If the paper addresses the question of access to justice, what main hurdles / pain points are identified? Here, focus more on high-level aspects rather than on technical or implementation details.
+- solutions: If the paper highlights obstacles to access to justice, how does the paper address them? What high-level solutions are proposed?
+- topics: If the paper addresses the question of access to justice, what is the specific topic or topics within access to justice that it targets?
+- community: If the paper addresses the question of access to justice, which specific underserved community does it seek to target?
+- legal_field: Which legal field or legal fields does the study cover?
+- jurisdiction: Which jurisdiction or jurisdictions does the study cover? You can write "International" if the paper does not specify a jurisdiction and if it seems broadly applicable.
+- training_data: If the technique proposed or studied by the paper uses a training dataset, what was it and where did it come from? Dimensions to consider include publicly available vs proprietary data, general vs domain-specific data, structured vs unstructured data, etc.
+For example, "Publicly available legal articles from open-access law reviews" or "A proprietary dataset of paired legal questions and expert-written answers".
+- design_methodologies: If the paper covers a specific technique, tool, or approach, what design methodologies were used to develop it?
+- deployment: If the paper covers a specific technique, tool, or approach, what deployment or diffusion strategies were used to make it available?
+- claimed_availability: Would the information contained in the paper lead the reader to conclude that, as a person not affiliated with the research team, their institution, or their user testing program, I could use the exact technique, tool, or approach discussed in the paper right now if I wanted to?
+Default to false if availability is not stated in the paper or does not apply to the paper.
+- claimed_open_availability: Would the information contained in the paper lead the reader to conclude that, as a person not affiliated with the research team, their institution, or their user testing program, I could download and use the exact technique, tool, or approach discussed in the paper right now for free if I wanted to (e.g. availability on GitHub or Hugging Face)?
+Default to false if open availability is not stated in the paper or does not apply to the paper.
+- which_claimed_availability: If claimed_availability or claimed_open_availability are true, describe the stated availability very briefly.
+- gaps: If the paper addresses the question of access to justice, what remaining gaps are mentioned (technical and/or societal)?
+- challenges: If the paper covers a specific technique, tool, or approach, what general challenges did the authors face when designing, developing, using, or deploying it?
+- risks: Which potential concrete risks are stated in the paper?
+
+JSON Format:
+Provide your annotations for the fields in this exact JSON format:
+{
+    "title": Free-text String,
+    "summary": Free-text String,
+    "is_english": Boolean (true or false),
+    "audience_legal_access": String in ("Idealistic", "Market", "N/A"),
+    "llm_use": Boolean (true or false),
+    "paper_type": String in ("1", "2", "3", "N/A"),
+    "sentiment": String in ("Positive", "Neutral", "Negative", "N/A"),
+    "technique": Free-text String or "N/A",
+    "testing": Free-text String or "N/A",
+    "results": Free-text String or "N/A",
+    "obstacles": Free-text String or "N/A",
+    "solutions": Free-text String or "N/A",
+    "topics": Free-text String or "N/A",
+    "community": Free-text String or "N/A",
+    "legal_field": Free-text String or "N/A",
+    "jurisdiction": Free-text String or "N/A",
+    "training_data": Free-text String or "N/A",
+    "design_methodologies": Free-text String or "N/A",
+    "deployment": Free-text String or "N/A",
+    "claimed_availability": Boolean (true or false),
+    "claimed_open_availability": Boolean (true or false),
+    "which_claimed_availability": Free-text String or "N/A",
+    "gaps": Free-text String or "N/A",
+    "challenges": Free-text String or "N/A",
+    "risks": Free-text String or "N/A"
+}
+
+Format instructions:
+- Always respond in the JSON format specified above. Only respond with the JSON object, nothing else before or after it. Your response will be piped directly to a JSON parser and should be able to be successfully parsed.
+- Do not change the names or order of the fields. Always fill out all the fields in English, even if the paper is in another language.
+- For every free-text string field, be as concise, terse, and specific as possible.
+- When specified, you are allowed to use "N/A" as the value for some free-text fields: use this if the question does not apply to the paper or if the required information is not contained explicitly in the paper. Do not make assumptions about the paper's content. If the information is not explicitly stated in the paper, use "N/A" as the value for the field.
+
+### Start of Paper text ###
+{paper_text}
+### End of Paper text ###

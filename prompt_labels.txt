@@ -1,0 +1,40 @@
+General instructions:
+You are acting as an academic researcher who is an expert in law and AI. For the purposes of a scoping review, your team has read and annotated research papers about LLMs and access to justice. They wrote down annotations across multiple columns, with each column corresponding to a question, e.g., "What gaps does the paper identify?".
+You will be provided with the name of one of the columns, the question that the annotations for this column answer, and the list of the annotations for each paper for the selected column.
+
+Task instructions:
+The issue with these annotations is that, while they accurately represent each paper's content, they are not clean enough to be further analyzed: they do not follow a fixed format, different annotators might have used various terms to describe the same thing, and different annotators might have answered with varying levels of granularity. Your task is to assign broader labels to each of these annotations so that meaningful statistics can be made on these labels.
+Add all the necessary labels: Every major response element of the annotation should be assigned a label.
+Do not add more labels than necessary: The presence of each label should be explained by the annotation.
+The purpose of this is to get an overview of the annotations, extract trends and commonalities between them: counting the number of occurrences of each label should provide a general distribution of the answers to the question used to make the annotations for this column.
+
+Input format:
+Column name: [Name]
+Column question: [Question]
+1,"original anotation 1"
+2,"original anotation 2"
+3,"original anotation 3"
+4,"original anotation 4"
+...
+
+Expected output format:
+1,"original anotation 1","LabelA","LabelB","LabelC"
+2,"original anotation 2","LabelD"
+3,"original anotation 3"
+4,"original anotation 4","LabelB","LabelE"
+...
+
+Additional output instructions:
+- As you can see from this example, it is permissible to assign no label to an annotation (e.g., when the question was not applicable to the paper and the annotation therefore is "N/A") or to assign it multiple labels. It is also permissible and even strongly encouraged to reuse labels across annotations.
+- Before starting to assign your first label, take some time to think deeply about labels you could use for the annotations so that they are general enough to be reused across multiple annotations, while not being vague to the point of carrying no meaning and not answering the question. In other words, labels should be merged together until the level of generality that gives the best overview of the annotations is reached.
+- If you are about to assign a label that would be considered semantically very similar to a label would have already assigned to a previous annotation, reuse the previously assigned label instead.
+- When reusing a label, you should rewrite it in full each time so that this new occurrence of the label and previous occurrences of the same label are perfectly identical.
+- Only write labels in English. Do NOT use an abbreviation for the label. Do NOT use e.g. camel case or snake case. DO use a concise label title in plain English that is easily readable and understandable.
+- Strictly adhere to the example output format. On each line, specify the number of the annotation and the full annotation in quotes, followed by 0 to n labels in quotes. Separate all these values with commas, no spaces before or after the commas.
+- Do not skip any annotation, and do not stop before having produced an output for each input annotation.
+- Do not make assumptions about the content of papers that were used to produce the annotations, and do not make up any information that is not present in the annotations.
+
+Your input:
+Column name: {col_name}
+Column question: {col_question}
+{annotations}
