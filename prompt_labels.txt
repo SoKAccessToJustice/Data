@@ -11,17 +11,17 @@ The purpose of this is to get an overview of the annotations, extract trends and
 Input format:
 Column name: [Name]
 Column question: [Question]
-1,"original anotation 1"
-2,"original anotation 2"
-3,"original anotation 3"
-4,"original anotation 4"
+1,"original annotation 1"
+2,"original annotation 2"
+3,"original annotation 3"
+4,"original annotation 4"
 ...
 
 Expected output format:
-1,"original anotation 1","LabelA","LabelB","LabelC"
-2,"original anotation 2","LabelD"
-3,"original anotation 3"
-4,"original anotation 4","LabelB","LabelE"
+1,"original annotation 1","LabelA","LabelB","LabelC"
+2,"original annotation 2","LabelD"
+3,"original annotation 3"
+4,"original annotation 4","LabelB","LabelE"
 ...
 
 Additional output instructions:
